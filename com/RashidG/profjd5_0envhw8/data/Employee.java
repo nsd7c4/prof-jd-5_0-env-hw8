@@ -5,7 +5,9 @@ import java.util.Objects;
 public class Employee {
     private String firstName;
     private String lastName;
-    private int id;
+    private double salary;
+    private int department;
+
 
     public double getSalary() {
         return salary;
@@ -15,34 +17,29 @@ public class Employee {
         this.salary = salary;
     }
 
-    public String getDepartment() {
+    public int getDepartment() {
         return department;
     }
 
-    public void setDepartment(String department) {
+    public void setDepartment(int department) {
         this.department = department;
     }
 
-    private double salary;
-    private String department;
-    private static int idCounter = 0;
-
-    public Employee(String firstName, String lastName) {
+    public Employee(String firstName, String lastName, int department, double salary) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.id = idCounter;
-        idCounter++;
+        this.department = department;
+        this.salary = salary;
     }
 
-    public int getId() {
-        return id;
-    }
 
     @Override
     public String toString() {
-        return "{" +
+        return "Employee{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", salary=" + salary +
+                ", department=" + department +
                 '}';
     }
 
@@ -56,7 +53,7 @@ public class Employee {
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, id);
+        return Objects.hash(firstName, lastName);
     }
 
     public String getFullName() {

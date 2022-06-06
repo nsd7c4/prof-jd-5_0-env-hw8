@@ -16,23 +16,43 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    @GetMapping (path = "/employee/add")
-    public String addEmployee(@RequestParam("first") String firstName,@RequestParam("last") String lastName) throws EmployeeBookIsFull, ExistedEmployee {
-            return employeeService.addEmployee(firstName, lastName);
+    @GetMapping(path = "/employee/add")
+    public String addEmployee(@RequestParam("first") String firstName, @RequestParam("last") String lastName) throws EmployeeBookIsFull, ExistedEmployee {
+        return employeeService.addEmployee(firstName, lastName);
     }
 
-    @GetMapping (path = "/employee/remove")
-    public String removeEmployee(@RequestParam("first") String firstName,@RequestParam("last") String lastName) throws EmployeeNotFound {
+    @GetMapping(path = "/employee/remove")
+    public String removeEmployee(@RequestParam("first") String firstName, @RequestParam("last") String lastName) throws EmployeeNotFound {
         return employeeService.removeEmployee(firstName, lastName);
     }
 
-    @GetMapping (path = "/employee/find")
-    public String findEmployee(@RequestParam("first") String firstName,@RequestParam("last") String lastName) throws EmployeeNotFound {
+    @GetMapping(path = "/employee/find")
+    public String findEmployee(@RequestParam("first") String firstName, @RequestParam("last") String lastName) throws EmployeeNotFound {
         return employeeService.findEmployee(firstName, lastName);
     }
 
-    @GetMapping (path = "/employee/all")
-    public String allEmployee(){
+    @GetMapping(path = "/employee/all")
+    public String allEmployee() {
         return employeeService.allEmployee();
     }
+
+    @GetMapping(path = "/departments/max-salary")
+    public String maxSalaryByDepartmentn(@RequestParam("departmentId") Integer departmentID) {
+        return employeeService.maxSalaryByDepartmentn(departmentID);
+    }
+
+    @GetMapping(path = "/departments/min-salary")
+    public String minSalaryByDepartmentn(@RequestParam("departmentId") Integer departmentID) {
+        return employeeService.minSalaryByDepartmentn(departmentID);
+    }
+
+    @GetMapping(path = "/departments/all")
+    public String allByDepartmentn(@RequestParam(value = "departmentId", required = false) Integer departmentID) {
+        if (departmentID == null) {
+            return employeeService.allEmployee();
+        } else {
+            return employeeService.allByDepartment(departmentID);
+        }
+    }
+
 }
