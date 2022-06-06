@@ -1,4 +1,4 @@
-package com.RashidG.profjd5_0envhw8;
+package com.RashidG.profjd5_0envhw8.data;
 
 import java.util.Objects;
 
@@ -6,6 +6,25 @@ public class Employee {
     private String firstName;
     private String lastName;
     private int id;
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    private double salary;
+    private String department;
     private static int idCounter = 0;
 
     public Employee(String firstName, String lastName) {

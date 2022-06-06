@@ -1,4 +1,4 @@
-package com.RashidG.profjd5_0envhw8;
+package com.RashidG.profjd5_0envhw8.exceptions;
 
 
 import org.springframework.http.HttpStatus;
